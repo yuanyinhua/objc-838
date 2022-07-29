@@ -12,14 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface LGPerson : NSObject
 
 + (id)person;
-
-+ (id)allocString;
-+ (id)initString;
-+ (id)copyString;
-
-+ (id)otherString;
-
 - (void)childThreadDemo;
+@end
+
+@interface LGPerson (Extentions)
+
+- (void)test;
+
 @end
 
 NS_ASSUME_NONNULL_END

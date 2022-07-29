@@ -16,15 +16,22 @@
 
 #import <Foundation/Foundation.h>
 #import "LGPerson.h"
+#import <objc/runtime.h>
+#import <malloc/malloc.h>
+
 extern void _objc_autoreleasePoolPrint(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        NSLog(@"Hello, KCObjcBuild!");
-        NSObject *objc = [NSObject alloc];
-        NSLog(@"开心调试 %@ 底层源码",objc);
+        LGPerson *objc = [[LGPerson alloc] init];
+        
+        [objc childThreadDemo];
+        
+        [objc test];
+        
+        NSLog(@"size: %@", @(malloc_size((__bridge const void *)objc)));
+        
     }
     
-
     return 0;
 }
